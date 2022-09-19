@@ -1,0 +1,21 @@
+<%# A linha abaixo carrega no template o conteúdo total do arquivo header.ejs%>
+<%-include('base_header') -%>
+<div class="row-autor">
+   <% for(var i=0; i< lista_pessoas.length; ++i) { %>   
+    <div class="nomeAutor">
+        <h2><%=lista_pessoas[i].nome %></h2><br/>
+    </div>
+    <br>
+    <div class="detalhesAutor">
+        <span class="descritor">Idade: <%=lista_pessoas[i].idade %></span><br/>
+        <span class="descritor">Conhecimentos:</span> <%=lista_pessoas[i].conhecimentos %> <br/>
+        <span class="descritor">Formação:</span> <%=lista_pessoas[i].formacao %><br/>    
+        <span class="descritor">Github:</span> <a href="<%=lista_pessoas[i].github %>" target="_blank">Clique aqui</a><br/>     
+        <span class="descritor">Linkedin:</span><a href="<%=lista_pessoas[i].linkedin%>" target="_blank">Clique aqui</a><br/>      
+    </div>
+ 
+            
+       <% } %>
+</div>
+<%# A linha abaixo carrega no template o conteúdo total do arquivo footer.ejs %>
+<%- include('base_footer') -%>
