@@ -1,3 +1,15 @@
+
+class Projeto {
+    constructor(id, titulo, tipo, tecnologia, inicio, fim){
+        this.id= id;
+        this.titulo = titulo;
+        this.tipo = tipo;
+        this.tecnologia = tecnologia;
+        this.inicio = inicio;
+        this.fim = fim;
+   }
+}
+
 class Pessoa{
     constructor(nome, idade, conhecimentos, formacao, github, linkedin){
         this.nome = nome;
@@ -9,25 +21,7 @@ class Pessoa{
     }
 }
 
-class Projeto{
-    constructor(nome, tipo, tecnologia, inicio, fim,  github){
-        this.nome = nome;
-        this.tipo = tipo;
-        this.tecnologia = tecnologia;
-        this.inicio = inicio;
-        this.fim = fim;
-        this.github = github;
-
-    }
-}
-
 module.exports = {
     Projeto: Projeto,
     Pessoa: Pessoa
-}  
-
-
-
-
-
-
+}
