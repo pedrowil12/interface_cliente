@@ -54,13 +54,28 @@ function listProjectHandler(req, resp){
             });    
 }
 
-function sobreAutorHandler(req, res){
-    let pessoa_1 = new Pessoa("Pedro Willian de Paula Ferreira", "19.", "NodeJS, Java, C#, React, HTML, CSS, Bootstrap, Jquery.", 
-    "Cursando 5º semestre de Análise e Desenvolvimento de Sistemas na Fatec de SJC.", "https://github.com/pedrowil12", "https://www.linkedin.com/in/pedro-ferreira-6a8417190/");
+
+
+function sobreAutorHandler(req, resp){
+    console.log("Efetuando requisição ao serviço");
     let pessoas = [];
-    pessoas.push(pessoa_1);
-    res.render('sobre_autor.ejs',{lista_pessoas: pessoas});
+    request('http://localhost:5001/listAdm',
+    { json: true }, (err, res, body) => {
+        if (err) { 
+            return console.log(err); 
+        } else {
+            res.body.forEach((item)=>{
+               
+                let pessoa = new Pessoa(item.nome, item.idade, item.conhecimentos,
+                    item.formacao, item.gitHub, item.linkedin, item.sobre);
+                    pessoas.push(pessoa);
+            });
+            resp.render("sobre_autor", {lista_pessoas: pessoas});
+        }
+    }
+    )
 }
+
 
 /* Tratador para inicializar a aplicação (escutar as requisições)*/
 function listenHandler(){
